@@ -18,7 +18,7 @@ export function WhatYouGetSection() {
     <section id="o-que-voce-recebe" className="relative bg-gray-light overflow-hidden md:pt-10 pb-6 md:pb-10 scroll-mt-10">
       {/* Background Image - Diagonal overlay extending to wave - Right side */}
       <div className="absolute hidden md:block inset-0 z-10 md:overflow-visible pointer-events-none" style={{ bottom: '-120px' }}>
-        <div className="absolute right-0 top-0 bottom-[-120px] w-full md:w-[66%] md:origin-top-right md:skew-x-[12deg] md:translate-x-[2%]">
+        <div className="absolute right-0 top-0 bottom-[-120px] w-full md:w-[68%] md:origin-top-right md:skew-x-[12deg] md:translate-x-[2%]">
           <Image
             src="/bg.png"
             alt=""
@@ -55,13 +55,14 @@ export function WhatYouGetSection() {
       <div className="w-full z-10 overflow-hidden">
         <div className="hidden md:grid grid-cols-[50%_30%] w-full min-h-[610px] gap-0">
           {/* Left Side - Image */}
-          <div className="relative w-full h-full min-h-[500px] z-0">
+          <div className="relative z-0 flex items-center justify-center" style={{ width: '800px', height: '600px', flexShrink: 0 }}>
             <Image
               src="/bgcomitens.png"
               alt="Mini mercado 3FIT com geladeira, freezer, totem de pagamento e estrutura"
-              fill
+              width={800}
+              height={600}
               className="object-contain object-left"
-              sizes="70vw"
+              style={{ width: '800px', height: '600px', maxWidth: 'none', maxHeight: 'none', flexShrink: 0 }}
               priority
             />
           </div>
@@ -135,7 +136,7 @@ export function WhatYouGetSection() {
                   <div className='w-full flex flex-col justify-center items-center'>
                     {/* Title */}
                     <div className='flex items-center bg-black p-2 mb-8'>
-                      <h2 className="text-2xl font-boldleading-tight">
+                      <h2 className="md:text-2xl text-xl font-boldleading-tight">
                         <span className="md:text-white text-[#FF7033] block mb-2">O QUE VOCÊ RECEBE SENDO UM</span>
                         <span className="text-black bg-white px-3 py-2 rounded-lg inline-block">LICENCIADO 3FIT?</span>
                       </h2>
