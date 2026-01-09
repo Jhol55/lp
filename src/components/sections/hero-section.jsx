@@ -93,7 +93,7 @@ export function HeroSection() {
         </div>
 
         {/* title.png with bg.png - Below in mobile */}
-        <div className="relative w-full h-[60vh] min-h-[300px] flex items-center justify-center">
+        <div className="relative w-full h-[60vh] min-h-[300px] flex items-center justify-center overflow-hidden">
           <div className="relative w-full h-full p-2">
             <Image
               src="/bg.png"
@@ -116,11 +116,18 @@ export function HeroSection() {
               </div>
             </div>
           </div>
+
+          {/* Wave at bottom - Mobile only */}
+          <div className="absolute bottom-0 left-0 right-0 z-20">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFFFF" />
+            </svg>
+          </div>
         </div>
       </div>
 
-      {/* Wave at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-20">
+      {/* Wave at bottom - Desktop only */}
+      <div className="absolute hidden md:block bottom-0 left-0 right-0 z-20">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto relative z-10">
           <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFFFF" />
         </svg>

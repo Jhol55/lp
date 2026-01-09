@@ -52,7 +52,7 @@ const advantages = [
 
 export function AdvantagesSection() {
   return (
-    <section id="vantagens" className="py-12 bg-white scroll-mt-20">
+    <section id="vantagens" className="pb-6 bg-white scroll-mt-20">
       <div className="container mx-auto px-4">
         <AnimateOnScroll animation="fadeInUp" delay={0.1} duration={0.8}>
           <div className="text-center mb-12">

@@ -44,8 +44,8 @@ export function WhatYouGetSection() {
         </div>
       </div>
 
-      {/* Wave at top */}
-      <div className="absolute hidden md:block top-0 left-0 right-0 z-20 rotate-180">
+      {/* Wave at top - Desktop and Mobile */}
+      <div className="absolute top-0 left-0 right-0 z-20 rotate-180">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
           <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFFFF" />
         </svg>
@@ -103,9 +103,9 @@ export function WhatYouGetSection() {
       </div>
 
       {/* Mobile: Stacked layout */}
-      <div className="md:hidden flex flex-col w-full">
+      <div className="md:hidden flex flex-col w-full relative">
         {/* bgcomitens.png - Above in mobile */}
-        <div className="relative w-full h-[70vh] min-h-[300px]">
+        <div className="relative w-full h-[40vh] sm:h-[70vh] min-h-[300px]">
           <Image
             src="/bgcomitens.png"
             alt="Mini mercado 3FIT com geladeira, freezer, totem de pagamento e estrutura"
@@ -116,8 +116,10 @@ export function WhatYouGetSection() {
           />
         </div>
 
+        
+
         {/* Content with bg.png - Below in mobile */}
-        <div className="relative w-full h-[70vh] min-h-[300px] flex items-center justify-center">
+        <div className="relative w-full h-[70vh] min-h-[300px] flex items-center justify-center -mt-1">
           <div className="relative w-full h-full p-2">
             <Image
               src="/bg.png"
@@ -127,8 +129,8 @@ export function WhatYouGetSection() {
               sizes="100vw"
               priority
             />
-            <div className="relative w-full h-full flex items-center justify-center z-10">
-              <div className="-translate-y-16 flex flex-col justify-center items-center w-full mx-auto p-4 relative z-10">
+            <div className="relative w-full h-full flex items-center justify-center z-50">
+              <div className="-translate-y-16 flex flex-col justify-center items-center w-full mx-auto p-4 z-10">
                 <AnimateOnScroll animation="slideLeft" delay={0.3} duration={0.8}>
                   <div className='w-full flex flex-col justify-center items-center'>
                     {/* Title */}
@@ -163,10 +165,17 @@ export function WhatYouGetSection() {
               </div>
             </div>
           </div>
+
+          {/* Wave at bottom - Mobile only */}
+          <div className="absolute bottom-0 left-0 right-0 z-20">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#F5F5F5" />
+            </svg>
+          </div>
         </div>
       </div>
 
-      {/* Wave at bottom */}
+      {/* Wave at bottom - Desktop only */}
       <div className="absolute hidden md:block bottom-0 left-0 right-0 z-20">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto relative z-10">
           <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#F5F5F5" />

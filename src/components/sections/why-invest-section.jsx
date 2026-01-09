@@ -24,7 +24,7 @@ const reasons = [
 
 export function WhyInvestSection() {
   return (
-    <section id="programa" className="py-12 bg-gray-light scroll-mt-20">
+    <section id="programa" className="pb-12 pt-6 bg-gray-light scroll-mt-20">
       <div className="container mx-auto px-4">
         <AnimateOnScroll animation="fadeInUp" delay={0.1} duration={0.8}>
           <div className="text-center mb-12">
