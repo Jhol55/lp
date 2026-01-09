@@ -18,7 +18,7 @@ export function WhatYouGetSection() {
     <section id="o-que-voce-recebe" className="relative bg-gray-light overflow-hidden md:pt-10 pb-6 md:pb-10 scroll-mt-10">
       {/* Background Image - Diagonal overlay extending to wave - Right side */}
       <div className="absolute hidden md:block inset-0 z-10 md:overflow-visible pointer-events-none" style={{ bottom: '-120px' }}>
-        <div className="absolute right-0 top-0 bottom-[-120px] w-full md:w-[65%] md:origin-top-right md:skew-x-[12deg] md:translate-x-[2%]">
+        <div className="absolute right-0 top-0 bottom-[-120px] w-full md:w-[66%] md:origin-top-right md:skew-x-[12deg] md:translate-x-[2%]">
           <Image
             src="/bg.png"
             alt=""
