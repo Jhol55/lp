@@ -29,14 +29,6 @@ module.exports = {
         'orange-gradient-hero': 'linear-gradient(to bottom, #FF7033, #FF8A4D)',
       },
           keyframes: {
-            // aurora: {
-            //   from: {
-            //     backgroundPosition: '50% 50%, 50% 50%',
-            //   },
-            //   to: {
-            //     backgroundPosition: '350% 50%, 350% 50%',
-            //   },
-            // },
             fadeIn: {
               '0%': { opacity: '0' },
               '100%': { opacity: '1' },
@@ -55,7 +47,6 @@ module.exports = {
             },
           },
           animation: {
-            aurora: 'aurora 60s linear infinite',
             fadeIn: 'fadeIn 0.6s ease-out',
             slideUp: 'slideUp 0.6s ease-out',
             slideDown: 'slideDown 0.6s ease-out',
