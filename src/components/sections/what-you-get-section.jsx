@@ -28,7 +28,7 @@ export function WhatYouGetSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] min-h-[400px] md:min-h-[800px] lg:min-h-[900px] relative z-10">
         {/* Left Side - Image */}
-        <AnimateOnScroll animation="slideRight" delay={0.2} duration={0.8}>
+        <AnimateOnScroll animation="slideRight" delay={0.2} duration={0.8} className="order-2 lg:order-1">
           <div className="relative w-full h-full min-h-[600px] md:min-h-[800px] overflow-hidden flex items-center justify-center lg:p-8">
             <div className="relative w-[70%] h-[70%] overflow-hidden z-10 border-4 border-white rounded-xl shadow-2xl">
               <Image
@@ -47,7 +47,7 @@ export function WhatYouGetSection() {
         </AnimateOnScroll>
 
         {/* Right Side - Content */}
-        <div className="relative text-white flex items-center py-16 md:py-24">
+        <div className="relative text-white flex items-center pt-16 md:py-24 order-1 lg:order-2">
           <div className="flex flex-col justify-center items-center w-full mx-auto p-4 md:pr-8 lg:pr-12 relative z-10">
             <AnimateOnScroll animation="slideLeft" delay={0.3} duration={0.8}>
               <div className='w-full flex flex-col justify-center items-center'>
