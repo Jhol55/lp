@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Footer() {
   return (
     <footer className="bg-[#2F3E4C] text-white">
@@ -5,11 +7,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Coluna 1: Logo e Descrição */}
           <div>
-            <div className="flex items-center space-x-2 mb-3">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">3</span>
-              </div>
-              <span className="text-primary font-bold text-xl">fit</span>
+            <div className="mb-3">
+              <Image
+                src="/logo.png"
+                alt="3FIT Logo"
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-sm text-gray-300 mb-3">
               Transforme vidas através da nutrição e construa um negócio lucrativo.

@@ -29,14 +29,14 @@ module.exports = {
         'orange-gradient-hero': 'linear-gradient(to bottom, #FF7033, #FF8A4D)',
       },
           keyframes: {
-            aurora: {
-              from: {
-                backgroundPosition: '50% 50%, 50% 50%',
-              },
-              to: {
-                backgroundPosition: '350% 50%, 350% 50%',
-              },
-            },
+            // aurora: {
+            //   from: {
+            //     backgroundPosition: '50% 50%, 50% 50%',
+            //   },
+            //   to: {
+            //     backgroundPosition: '350% 50%, 350% 50%',
+            //   },
+            // },
             fadeIn: {
               '0%': { opacity: '0' },
               '100%': { opacity: '1' },
