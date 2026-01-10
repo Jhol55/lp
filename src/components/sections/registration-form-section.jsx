@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -97,6 +97,16 @@ export function RegistrationFormSection() {
   const [currentStep, setCurrentStep] = useState(1);
   const [direction, setDirection] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [shouldAutoFocus, setShouldAutoFocus] = useState(false);
+  
+  useEffect(() => {
+    // Só permite autofocus se houver hash na URL (usuário clicou em link)
+    if (typeof window !== 'undefined') {
+      const hasHash = window.location.hash === '#formulario';
+      setShouldAutoFocus(hasHash);
+    }
+  }, []);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -292,7 +302,7 @@ export function RegistrationFormSection() {
               value={formData.name}
               onChange={handleChange}
               className={cn(errors.name && 'border-red-500 focus:ring-red-500')}
-              autoFocus
+              autoFocus={shouldAutoFocus && currentStep === 1}
             />
             {errors.name && (
               <p className="mt-1 text-sm text-red-500">{errors.name}</p>
@@ -313,7 +323,7 @@ export function RegistrationFormSection() {
               value={formData.email}
               onChange={handleChange}
               className={cn(errors.email && 'border-red-500 focus:ring-red-500')}
-              autoFocus
+              autoFocus={shouldAutoFocus && currentStep === 2}
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-500">{errors.email}</p>
@@ -334,7 +344,7 @@ export function RegistrationFormSection() {
               value={formData.phone}
               onChange={handleChange}
               className={cn(errors.phone && 'border-red-500 focus:ring-red-500')}
-              autoFocus
+              autoFocus={shouldAutoFocus && currentStep === 3}
             />
             {errors.phone && (
               <p className="mt-1 text-sm text-red-500">{errors.phone}</p>

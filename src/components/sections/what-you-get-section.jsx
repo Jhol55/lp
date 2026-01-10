@@ -140,7 +140,6 @@ export function WhatYouGetSection() {
                         <span className="md:text-white text-[#FF7033] block mb-2">O QUE VOCÊ RECEBE SENDO UM</span>
                         <span className="text-black bg-white px-3 py-2 rounded-lg inline-block">LICENCIADO 3FIT?</span>
                       </h2>
-
                     </div>
 
                     {/* Benefits List */}
