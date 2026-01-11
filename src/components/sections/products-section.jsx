@@ -17,7 +17,7 @@ export function ProductsSection() {
     <section id="products" className="relative overflow-hidden pt-12 sm:pt-18 md:pt-20 lg:pt-32 pb-2 sm:pb-18 md:pb-20 lg:pb-32  scroll-mt-20">
       <div className="container mx-auto px-4">
         {/* Title */}
-        <div className="max-w-5xl mx-auto mb-8 md:mb-12 px-4">
+        <div className="max-w-5xl mb-8 md:mb-12 px-4">
           <AnimateOnScroll animation="fadeInUp" delay={0.1} duration={0.8}>
             <div>
               <h2 className="text-3xl italic md:text-4xl lg:text-5xl font-bold mb-4">
@@ -32,7 +32,7 @@ export function ProductsSection() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:gap-6 max-w-5xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 md:gap-6 max-w-5xl md:max-w-7xl mx-auto mb-12">
           {products.map((product, index) => (
             <AnimateOnScroll
               key={index}
@@ -40,7 +40,7 @@ export function ProductsSection() {
               delay={0.2 + (index * 0.05)}
               duration={0.6}
             >
-              <div className="relative aspect-[16/10] md:aspect-square bg-black rounded-lg overflow-hidden shadow-lg">
+              <div className="relative aspect-[16/9] bg-black rounded-lg overflow-hidden shadow-lg">
                 <Image
                   src={product.image}
                   alt={`Produto ${index + 1}`}
