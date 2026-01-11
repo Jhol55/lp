@@ -27,11 +27,11 @@ let advantages = [
 
 export function AdvantagesSection() {
   return (
-    <section id="vantagens" className="relative scroll-mt-20 overflow-visible">
+    <section className="relative scroll-mt-20 overflow-visible">
       {/* bg.png removido - usando componente Bg global */}
 
 
-      <div className="container mx-auto px-4 relative z-10 pb-12 md:py-16 md:hidden block -translate-y-6">
+      <div className="container mx-auto px-4 relative z-10 pb-12 md:py-16 md:hidden block translate-y-2">
         <div className="flex flex-col gap-3 max-w-2xl mx-auto relative z-10 px-6">
           {advantages.map((advantage, index) => {
             const IconComponent = advantage.icon;

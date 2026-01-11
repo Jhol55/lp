@@ -35,7 +35,7 @@ export function HeroSection() {
     document.getElementById('vantagens')?.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <section className="relative text-white md:pb-32 overflow-hidden pt-0">
+    <section id="vantagens" className="relative text-white md:pb-32 overflow-hidden pt-0 scroll-mt-20">
       <div className="absolute hidden md:block inset-0 z-10 md:overflow-visible pointer-events-none" style={{ bottom: '-120px' }}>
         <div className="absolute right-0 top-0 bottom-[50%] lg:bottom-[25%] w-full md:w-full md:origin-top-right ">
           <Image

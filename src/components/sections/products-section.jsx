@@ -14,7 +14,7 @@ const products = [
 
 export function ProductsSection() {
   return (
-    <section id="products" className="relative overflow-hidden pt-12 pb-12 sm:pb-18 md:pb-22 lg:pb-30  scroll-mt-20">
+    <section id="products" className="relative overflow-hidden pt-12 sm:pt-18 md:pt-20 lg:pt-32 pb-2 sm:pb-18 md:pb-20 lg:pb-32  scroll-mt-20">
       <div className="container mx-auto px-4">
         {/* Title */}
         <div className="max-w-5xl mx-auto mb-8 md:mb-12 px-4">
@@ -51,6 +51,13 @@ export function ProductsSection() {
             </AnimateOnScroll>
           ))}
         </div>
+      </div>
+
+      {/* Wave at top - Desktop and Mobile */}
+      <div className="absolute top-0 left-0 right-0 z-20 rotate-180">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+          <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFFFF" />
+        </svg>
       </div>
 
       {/* Wave at bottom - Mobile only */}
