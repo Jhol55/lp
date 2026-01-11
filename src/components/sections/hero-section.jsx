@@ -94,7 +94,7 @@ export function HeroSection() {
                   <span className="lg:hidden whitespace-nowrap block">de alimentação saudável, torne-se</span>
                   <span className="lg:hidden whitespace-nowrap block">hoje mesmo o mais novo licenciado da</span>
                   <span className="lg:hidden whitespace-nowrap block">3Fit.</span>
-                  
+
                   {/* Desktop (md+): 3 linhas */}
                   <span className="hidden lg:block whitespace-nowrap">Seja dono do <span className="font-extrabold uppercase bg-black px-1 text-[#FF8D00]">SEU PRÓPRIO NEGÓCIO</span> de alimentação</span>
                   <span className="hidden lg:block whitespace-nowrap">saudável, torne-se hoje mesmo o mais novo licenciado da</span>
@@ -124,57 +124,37 @@ export function HeroSection() {
         </div>
       </div>
       <div className="md:hidden flex flex-col w-full">
-        <div className="relative w-full h-[45svh] min-h-[300px]">
-          <Image
-            src="/influencers.png"
-            alt="Mini mercado 3FIT com geladeira, freezer, totem de pagamento e estrutura"
-            fill
-            sizes="100vw"
-            className="object-contain object-center z-10"
-            priority
-          />
-          {/* bg.png removido - usando componente Bg global */}
-        </div>
-
-        {/* title.png with bg.png - Below in mobile */}
-        <div className="relative w-full h-[45svh] min-h-[300px] flex items-center justify-center">
-          <div className="relative w-full h-full p-2">
-            {/* bg.png removido - usando componente Bg global */}
-            <div className="relative w-full h-full flex flex-col items-center justify-center z-10">
-              <div className="relative w-full max-w-full aspect-square h-[360px] mt-16">
-                <Image
-                  src="/logo2.png"
-                  alt="3FIT Market - Seja um licenciado"
-                  fill
-                  className="object-contain object-center !h-[6rem] translate-x-10 -translate-y-14"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-                <Image
-                  src="/title2.png"
-                  alt="3FIT Market - Seja um licenciado"
-                  fill
-                  className="object-contain object-center !h-32 mt-16"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-              </div>
-              <div className="w-full max-w-[95%] px-4 -translate-y-32">
-                <h2 className="text-white text-lg md:text-xl font-bold text-center mb-6 leading-tight">
-                  Seja dono do <span className="font-extrabold uppercase bg-black px-1 text-[#FF8D00]">SEU PRÓPRIO NEGÓCIO</span> de alimentação saudável, torne-se hoje mesmo o mais novo licenciado da 3Fit.
-                </h2>
-
-              </div>
-            </div>
+        <div className="relative w-full flex flex-col items-center justify-center gap-4 py-4">
+          <div className="relative w-full h-[45svh] min-h-[300px]">
+            <Image
+              src="/influencers-logo.png"
+              alt="Mini mercado 3FIT com geladeira, freezer, totem de pagamento e estrutura"
+              fill
+              sizes="100vw"
+              className="object-contain object-center z-10"
+              priority
+            />
           </div>
+          <div className="relative w-full h-32 flex items-center justify-center">
+            <Image
+              src="/title2.png"
+              alt="3FIT Market - Seja um licenciado"
+              width={300}
+              height={128}
+              className="object-contain object-center h-full w-auto"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
+          </div>
+          <div className="relative w-full max-w-[95%] px-4 mt-8 mb-4">
+            <h2 className="text-white text-lg md:text-xl font-bold text-center mb-6 leading-tight">
+              Seja dono do <span className="font-extrabold uppercase bg-black px-1 text-[#FF8D00]">SEU PRÓPRIO NEGÓCIO</span> de alimentação saudável, torne-se hoje mesmo o mais novo licenciado da 3Fit.
+            </h2>
 
-          {/* Wave at bottom - Mobile only */}
-          {/* <div className="absolute bottom-0 translate-y-1 left-0 right-0 z-20">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-              <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFFFF" />
-            </svg>
-          </div> */}
+          </div>
         </div>
+
+        
       </div>
 
       {/* Wave at bottom - Desktop only */}

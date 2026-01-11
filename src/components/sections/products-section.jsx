@@ -14,7 +14,7 @@ const products = [
 
 export function ProductsSection() {
   return (
-    <section id="products" className="relative overflow-hidden pt-12 sm:pt-18 md:pt-20 lg:pt-32 pb-2 sm:pb-18 md:pb-20 lg:pb-32  scroll-mt-20">
+    <section id="products" className="relative overflow-hidden pt-12 sm:pt-18 md:pt-20 lg:pt-32 pb-2 sm:pb-18 md:pb-20 lg:pb-32 scroll-mt-20">
       <div className="container mx-auto px-4">
         {/* Title */}
         <div className="max-w-5xl mb-8 md:mb-12 px-4">

@@ -29,15 +29,19 @@ export function Bg() {
             const isFirstLoad = lastHeightRef.current === 0;
 
             if (isFirstLoad || heightDiff > 200) {
-              const reps = Math.ceil(currentHeight / currentVh50);
+              // Calcula blockHeight primeiro e usa o mesmo valor para calcular reps
+              // Isso garante consistência durante o redimensionamento
+              const newBlockHeight = Math.floor(currentVh50);
+              const reps = Math.ceil(currentHeight / newBlockHeight);
               
-              // Só atualiza o estado se o número de blocos realmente mudar
+              // Atualiza sempre que necessário para garantir valores consistentes durante resize
               if (reps !== lastRepsRef.current || isFirstLoad) {
                 setNumberOfRepetitions(reps);
-                setBlockHeight(currentVh50);
                 lastRepsRef.current = reps;
-                lastHeightRef.current = currentHeight;
               }
+              // Sempre atualiza blockHeight para manter valores sincronizados durante resize
+              setBlockHeight(newBlockHeight);
+              lastHeightRef.current = currentHeight;
             }
           });
         };
@@ -79,7 +83,11 @@ export function Bg() {
         const isEven = index % 2 === 0;
         
         // Se ainda não calculamos o blockHeight em pixels, usamos svh como fallback inicial (mais estável no mobile)
-        const topPosition = blockHeight ? `${index * blockHeight}px` : `${index * 50}svh`;
+        // Cada elemento (exceto o primeiro) começa 1px antes do anterior para eliminar gaps
+        // A sobreposição é acumulativa: elemento 1 sobrepõe 1px, elemento 2 sobrepõe 2px, etc.
+        const topPosition = blockHeight 
+          ? `${index === 0 ? 0 : index * blockHeight - index}px` 
+          : `${index * 50}svh`;
         const heightValue = blockHeight ? `${blockHeight}px` : `50svh`;
         
         return (
