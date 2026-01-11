@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
+import { Banner } from "@/components/ui/banner";
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const TOTAL_STEPS = 4;
 
@@ -98,7 +100,7 @@ export function RegistrationFormSection() {
   const [direction, setDirection] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [shouldAutoFocus, setShouldAutoFocus] = useState(false);
-  
+
   useEffect(() => {
     // Só permite autofocus se houver hash na URL (usuário clicou em link)
     if (typeof window !== 'undefined') {
@@ -106,7 +108,7 @@ export function RegistrationFormSection() {
       setShouldAutoFocus(hasHash);
     }
   }, []);
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -132,7 +134,7 @@ export function RegistrationFormSection() {
 
   const validateStep = (step) => {
     const newErrors = {};
-    
+
     switch (step) {
       case 1:
         if (!formData.name.trim()) {
@@ -203,7 +205,7 @@ export function RegistrationFormSection() {
       const step = index + 1;
       const isCompleted = step < currentStep;
       const isActive = step === currentStep;
-      
+
       return (
         <div
           key={step}
@@ -380,13 +382,22 @@ export function RegistrationFormSection() {
   };
 
   return (
-    <section id="formulario" className="py-12 bg-gray-light scroll-mt-20">
-      <div className="container mx-auto px-4">
+    <section id="formulario" className="relative py-12 pb-14 sm:pb-20 md:pb-24 lg:pb-32 scroll-mt-20 overflow-visible">
+      {/* bg.png removido - usando componente Bg global */}
+      <div
+        className="absolute w-full h-full -top-10 md:top-0 left-0 right-0 z-0 pointer-events-none overflow-hidden"
+      >
+        <div className="relative w-full h-full">
+          <Banner text="INSCREVA-SE" />
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 mt-2 md:mt-20 lg:mt-32 relative z-20">
         <div className="max-w-2xl mx-auto">
           {/* Banner */}
           <AnimateOnScroll animation="fadeInDown" delay={0.1} duration={0.8}>
-            <div className="bg-primary rounded-t-2xl p-6 md:p-8 text-center text-white mb-0">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3">
+            <div className="bg-[#0D0D0D] rounded-t-2xl p-6 md:p-8 text-center text-white mb-0">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#FF8D00] mb-3">
                 Garanta Sua Vaga Agora!
               </h2>
               <p className="text-base md:text-lg text-white/90">
@@ -408,10 +419,10 @@ export function RegistrationFormSection() {
                   transition={{ duration: 0.3 }}
                 >
                   {/* Progress Indicator - Completely isolated from animations */}
-                  <div 
-                    className="px-6 md:px-8 pt-6 md:pt-8" 
-                    style={{ 
-                      isolation: 'isolate', 
+                  <div
+                    className="px-6 md:px-8 pt-6 md:pt-8"
+                    style={{
+                      isolation: 'isolate',
                       contain: 'layout style paint',
                       transform: 'translateZ(0)',
                       position: 'relative',
@@ -460,7 +471,7 @@ export function RegistrationFormSection() {
                           transition={stepTransition}
                           className="w-full"
                           layout={false}
-                          style={{ 
+                          style={{
                             willChange: 'transform, opacity',
                             position: 'relative',
                             zIndex: 1
@@ -486,7 +497,7 @@ export function RegistrationFormSection() {
                         ) : (
                           <div></div>
                         )}
-                        
+
                         {currentStep < TOTAL_STEPS ? (
                           <Button
                             type="button"
@@ -520,6 +531,20 @@ export function RegistrationFormSection() {
             </AnimatePresence>
           </div>
         </div>
+      </div>
+
+      {/* Wave at bottom - Mobile only */}
+      <div className="absolute bottom-0 translate-y-1 left-0 right-0 z-20 md:hidden">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+          <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFFFF" />
+        </svg>
+      </div>
+
+      {/* Wave at bottom - Desktop only */}
+      <div className="absolute hidden md:block bottom-0 translate-y-1 left-0 right-0 z-20">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto relative z-10">
+          <path d="M0 120L60 100C120 80 240 40 360 33.3C480 26.7 600 53.3 720 66.7C840 80 960 80 1080 66.7C1200 53.3 1320 26.7 1380 13.3L1440 0V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#FFFFFF" />
+        </svg>
       </div>
     </section>
   );

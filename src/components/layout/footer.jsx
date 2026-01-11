@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-[#2F3E4C] text-white">
+    <footer className="bg-[#2F3E4C] text-white relative">
       <div className="container mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Coluna 1: Logo e Descrição */}

@@ -32,7 +32,7 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-12 bg-white scroll-mt-20">
+    <section id="faq" className="relative py-12 bg-white scroll-mt-20">
       <div className="container mx-auto px-4 max-w-4xl">
         <AnimateOnScroll animation="fadeInUp" delay={0.1} duration={0.8}>
           <div className="text-center mb-10">

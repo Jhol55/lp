@@ -11,7 +11,7 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "#FF7033",
+          DEFAULT: "#FF8D00",
           light: "#FFE5D9",
           dark: "#E55A20",
         },
@@ -45,12 +45,17 @@ module.exports = {
               '0%': { transform: 'scale(0.95)', opacity: '0' },
               '100%': { transform: 'scale(1)', opacity: '1' },
             },
+            'blink-cursor': {
+              '0%, 50%': { opacity: '1' },
+              '51%, 100%': { opacity: '0' },
+            },
           },
           animation: {
             fadeIn: 'fadeIn 0.6s ease-out',
             slideUp: 'slideUp 0.6s ease-out',
             slideDown: 'slideDown 0.6s ease-out',
             scaleIn: 'scaleIn 0.6s ease-out',
+            'blink-cursor': 'blink-cursor 1s infinite',
           },
     },
   },
