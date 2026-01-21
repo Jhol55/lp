@@ -10,8 +10,9 @@ import { Banner } from "@/components/ui/banner";
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { submitRegistration } from '@/actions/submit-registration';
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 5;
 
 const stepVariants = {
   enter: (direction) => ({
@@ -114,8 +115,11 @@ export function RegistrationFormSection() {
     email: '',
     phone: '',
     investment: '',
+    startTimeline: '',
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -162,6 +166,11 @@ export function RegistrationFormSection() {
           newErrors.investment = 'Selecione uma opção de investimento';
         }
         break;
+      case 5:
+        if (!formData.startTimeline) {
+          newErrors.startTimeline = 'Selecione quando pretende iniciar';
+        }
+        break;
       default:
         break;
     }
@@ -188,13 +197,25 @@ export function RegistrationFormSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateStep(currentStep)) {
-      // Handle form submission
-      console.log('Form submitted:', formData);
-      // TODO: Implement server action or API call
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 500));
-      setIsSubmitted(true);
+    setSubmitError('');
+
+    const isValid = validateStep(currentStep);
+    if (!isValid) return;
+
+    try {
+      setIsSubmitting(true);
+      const result = await submitRegistration(formData);
+
+      if (result?.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(result?.error || 'Não foi possível enviar seus dados. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('handleSubmit error:', error);
+      setSubmitError('Erro inesperado ao enviar. Tente novamente.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -233,10 +254,11 @@ export function RegistrationFormSection() {
 
   const SuccessScreen = ({ formData }) => {
     const calendarRef = useRef(null);
+    const [showCalendly, setShowCalendly] = useState(false);
 
     // Construir URL do Calendly com pre-fill
     const buildCalendlyUrl = () => {
-      const baseUrl = 'https://calendly.com/jhonathan_galhardo/30min?hide_gdpr_banner=1';
+      const baseUrl = 'https://calendly.com/3fitgads/30min?hide_gdpr_banner=1';
       const params = new URLSearchParams();
 
       // Adiciona parâmetros de pre-fill
@@ -258,20 +280,29 @@ export function RegistrationFormSection() {
 
     const calendlyUrl = buildCalendlyUrl();
 
-    // Scroll para o calendário quando o componente for montado
+    // Delay antes de mostrar o calendário (4 segundos para dar tempo de ler)
     useEffect(() => {
-      setTimeout(() => {
-        if (calendarRef.current) {
+      const timer = setTimeout(() => {
+        setShowCalendly(true);
+      }, 4000); // 4 segundos de delay
+
+      return () => clearTimeout(timer);
+    }, []);
+
+    // Scroll para o calendário quando ele aparecer
+    useEffect(() => {
+      if (showCalendly && calendarRef.current) {
+        setTimeout(() => {
           const elementPosition = calendarRef.current.getBoundingClientRect().top + window.pageYOffset;
-          const offset = 80; // Ajuste esse valor (positivo = sobe, negativo = desce)
+          const offset = 80;
 
           window.scrollTo({
             top: elementPosition - offset,
             behavior: 'smooth'
           });
-        }
-      }, 3000);
-    }, []);
+        }, 300);
+      }
+    }, [showCalendly]);
 
     return (
       <motion.div
@@ -324,39 +355,41 @@ export function RegistrationFormSection() {
             Cadastro Realizado com Sucesso!
           </h2>
           <p className="text-base md:text-lg text-gray-medium max-w-md mx-auto">
-            Inscrição realizada! Agora, agende sua reunião abaixo:
+            Estamos quase lá! Agende agora sua reunião de 30 minutos com um de nossos especialistas para entender todo o modelo de negócio da 3Fit
           </p>
         </motion.div>
 
-        {/* Calendly Iframe */}
-        <motion.div
-          ref={calendarRef}
-          variants={textVariants}
-          initial="initial"
-          animate="animate"
-          className="w-full bg-white rounded-2xl shadow-xl overflow-hidden"
-          style={{
-            height: '100vh',
-            maxHeight: '100vh',
-            overflow: 'hidden',
-            position: 'relative',
-            backgroundColor: '#FFFFFF',        
-          }}
-        >
-          <iframe
-            src={calendlyUrl}
+        {/* Calendly Iframe - só aparece após o delay */}
+        {showCalendly && (
+          <motion.div
+            ref={calendarRef}
+            variants={textVariants}
+            initial="initial"
+            animate="animate"
+            className="w-full bg-white rounded-2xl shadow-xl overflow-hidden"
             style={{
-              border: 0,
-              width: '100%',
-              height: '100%',
+              height: '100vh',
+              maxHeight: '100vh',
               overflow: 'hidden',
-              display: 'block',             
+              position: 'relative',
               backgroundColor: '#FFFFFF',
             }}
-            title="Agendar Reunião"
-            allowFullScreen
-          />
-        </motion.div>
+          >
+            <iframe
+              src={calendlyUrl}
+              style={{
+                border: 0,
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
+                display: 'block',
+                backgroundColor: '#FFFFFF',
+              }}
+              title="Agendar Reunião"
+              allowFullScreen
+            />
+          </motion.div>
+        )}
       </motion.div>
     );
   };
@@ -446,6 +479,31 @@ export function RegistrationFormSection() {
             </Select>
             {errors.investment && (
               <p className="mt-1 text-sm text-red-500">{errors.investment}</p>
+            )}
+          </div>
+        );
+      case 5:
+        return (
+          <div className="w-full">
+            <label htmlFor="startTimeline" className="block text-gray-dark font-semibold mb-1.5 text-sm">
+              Quando você pretende iniciar o negócio? *
+            </label>
+            <Select
+              id="startTimeline"
+              name="startTimeline"
+              value={formData.startTimeline}
+              onChange={handleChange}
+              className={cn(errors.startTimeline && 'border-red-500 focus:ring-red-500')}
+              autoFocus={shouldAutoFocus && currentStep === 5}
+            >
+              <option value="">Selecione uma opção</option>
+              <option value="Imediatamente">Imediatamente</option>
+              <option value="Em 30 dias">Em 30 dias</option>
+              <option value="Em 60 dias">Em 60 dias</option>
+              <option value="Mais de 90 dias">Mais de 90 dias</option>
+            </Select>
+            {errors.startTimeline && (
+              <p className="mt-1 text-sm text-red-500">{errors.startTimeline}</p>
             )}
           </div>
         );
@@ -563,6 +621,7 @@ export function RegistrationFormSection() {
                             type="button"
                             onClick={handleBack}
                             variant="white"
+                            disabled={isSubmitting}
                             className="flex-1 md:flex-initial text-[#FF7033] flex items-center justify-center gap-2 hover:!bg-gray-100 normal-case"                          >
                             <ArrowLeft className="w-4 h-4" />
                             <span>VOLTAR</span>
@@ -576,6 +635,7 @@ export function RegistrationFormSection() {
                             type="button"
                             onClick={handleNext}
                             variant="primary"
+                            disabled={isSubmitting}
                             className="flex-1 md:flex-initial flex items-center justify-center gap-2"
                           >
                             <span>Próximo</span>
@@ -585,12 +645,19 @@ export function RegistrationFormSection() {
                           <Button
                             type="submit"
                             variant="primary"
+                            disabled={isSubmitting}
                             className="flex-1 md:flex-initial w-full md:w-auto"
                           >
-                            QUERO COMEÇAR AGORA
+                            {isSubmitting ? 'Enviando...' : 'QUERO COMEÇAR AGORA'}
                           </Button>
                         )}
                       </div>
+
+                      {submitError && (
+                        <p className="text-center text-sm text-red-500">
+                          {submitError}
+                        </p>
+                      )}
 
                       {currentStep === TOTAL_STEPS && (
                         <p className="text-center text-sm text-gray-400 mt-4">
