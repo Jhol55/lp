@@ -5,29 +5,25 @@ import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 
 const faqs = [
   {
-    question: "Preciso ser formado em nutrição?",
-    answer: "Não! Nosso programa é desenvolvido para qualquer pessoa que queira trabalhar com alimentação saudável. Você receberá todo o conhecimento necessário e certificação para atuar com segurança.",
+    question: "Posso começar o licenciamento 3Fit operando de casa?",
+    answer: "Sim. A 3Fit permite iniciar a operação a partir de casa, desde que o espaço atenda às exigências mínimas sanitárias e operacionais. Isso reduz drasticamente o investimento inicial e permite validar o negócio antes de evoluir para uma estrutura maior.",
   },
   {
-    question: "Quanto tempo leva para começar a faturar?",
-    answer: "O retorno do investimento acontece em menos de 1 ano. Após concluir o programa de capacitação e receber sua certificação, você já pode começar a atender clientes e faturar.",
+    question: "Preciso ter experiência prévia com alimentação ou cozinha para ser um licenciado 3Fit?",
+    answer: "Não. O licenciamento 3Fit foi estruturado para empreendedores. Os produtos chegam prontos, com cardápio validado e padronizado, eliminando a necessidade de produção complexa. Além disso, você recebe treinamento completo, manuais operacionais e suporte contínuo, permitindo operar mesmo sem experiência anterior no segmento.",
   },
   {
-    question: "Qual o investimento necessário?",
-    answer: "O investimento inicial é de R$ 30 mil, que inclui todo o suporte necessário, sistema de gestão, treinamento completo e certificação profissional.",
+    question: "Qual é o investimento inicial para abrir uma unidade licenciada 3Fit?",
+    answer: "O investimento inicial é a partir de R$ 14.997, podendo variar conforme o modelo de operação e a cidade. É um valor significativamente menor do que o de licenciamento normal. Todo o detalhamento é apresentado na etapa de apresentação oficial, sempre com foco em retorno, viabilidade e escala do negócio.",
   },
   {
-    question: "Terei suporte durante o programa?",
-    answer: "Sim! Você terá acesso a suporte completo durante todo o programa, incluindo acompanhamento contínuo, sistema de gestão em tempo real e equipe disponível para tirar dúvidas.",
+    question: "Quanto tempo leva para começar a operar após a assinatura do contrato?",
+    answer: "Após a assinatura do contrato e conclusão do onboarding, a unidade pode iniciar a operação em até 30 dias úteis, dependendo apenas da estrutura mínima e adequação do espaço. Todo o processo é rápido, organizado e guiado passo a passo pela equipe 3Fit.",
   },
   {
-    question: "O certificado é reconhecido?",
-    answer: "Sim, o certificado é profissional e reconhecido, permitindo que você atue com segurança e credibilidade no mercado de alimentação saudável.",
-  },
-  {
-    question: "Posso trabalhar de qualquer lugar?",
-    answer: "Com nosso modelo de negócio, você tem flexibilidade para atuar em diferentes locais, adaptando o portfólio de produtos conforme as necessidades de cada região.",
-  },
+    question: "Existe exclusividade de território para o licenciado?",
+    answer: "Sim. Cada licenciado opera em uma praça exclusiva, protegendo o investimento e evitando concorrência interna, desde que respeitadas as diretrizes e metas estabelecidas no contrato.",
+  }
 ];
 
 export function FAQSection() {
