@@ -559,9 +559,6 @@ export function RegistrationFormSection() {
                         <span className="text-sm font-semibold text-gray-dark">
                           Passo {currentStep} de {TOTAL_STEPS}
                         </span>
-                        <span className="text-sm text-gray-medium">
-                          {Math.round(progressPercentage)}%
-                        </span>
                       </div>
                       <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                         <motion.div
