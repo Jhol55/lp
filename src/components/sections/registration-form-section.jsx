@@ -179,10 +179,12 @@ export function RegistrationFormSection() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
+  const handleNext = (e) => {
+    e?.preventDefault?.();
     if (validateStep(currentStep)) {
       if (currentStep < TOTAL_STEPS) {
         setDirection(1);
+        setErrors({});
         setCurrentStep(currentStep + 1);
       }
     }
@@ -578,7 +580,13 @@ export function RegistrationFormSection() {
                     </div>
                   </div>
 
-                  <form onSubmit={handleSubmit}>
+                  <form
+                    onSubmit={handleSubmit}
+                    onKeyDown={(e) => {
+                      if (e.key !== 'Enter') return;
+                      if (currentStep < TOTAL_STEPS) e.preventDefault();
+                    }}
+                  >
                     <div className="px-6 md:px-8 pb-4 min-h-[120px] flex items-center" style={{ position: 'relative', overflow: 'hidden', isolation: 'isolate' }}>
                       <AnimatePresence mode="wait" custom={direction} initial={false}>
                         <motion.div
@@ -620,6 +628,7 @@ export function RegistrationFormSection() {
 
                         {currentStep < TOTAL_STEPS ? (
                           <Button
+                            key="next"
                             type="button"
                             onClick={handleNext}
                             variant="primary"
@@ -631,6 +640,7 @@ export function RegistrationFormSection() {
                           </Button>
                         ) : (
                           <Button
+                            key="submit"
                             type="submit"
                             variant="primary"
                             disabled={isSubmitting}
