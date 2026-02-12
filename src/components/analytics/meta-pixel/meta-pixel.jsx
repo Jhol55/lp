@@ -44,6 +44,16 @@ export default function MetaPixel() {
           `,
         }}
       />
+      <noscript>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          alt=""
+          src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+        />
+      </noscript>
     </>
   );
 }

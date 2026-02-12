@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { Suspense } from "react";
+
 import MetaPixel from "@/components/analytics/meta-pixel/meta-pixel";
 
 const geistSans = localFont({
@@ -35,7 +37,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased !overflow-x-hidden`}
       >
         {children}
-        <MetaPixel />
+        <Suspense fallback={null}>
+          <MetaPixel />
+        </Suspense>
       </body>
     </html>
   );
