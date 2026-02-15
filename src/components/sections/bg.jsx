@@ -98,8 +98,8 @@ export function Bg() {
               className={`object-cover object-bottom ${
                 isEven ? '' : '[transform:rotate(180deg)scaleX(-1)]'
               }`}
-              priority={index < 4}
-              loading={index < 6 ? 'eager' : 'lazy'}
+              priority={index === 0}
+              loading={index === 0 ? 'eager' : 'lazy'}
             />
           </div>
         );

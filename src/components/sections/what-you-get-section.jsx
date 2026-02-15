@@ -15,7 +15,6 @@ export function WhatYouGetSection() {
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover md:object-contain object-left"
-            priority
           />
         </div>
       </div>
@@ -29,7 +28,6 @@ export function WhatYouGetSection() {
               width={500}
               height={500}
               className="object-contain object-right"
-              priority
             />
             <div className="relative w-full h-full min-h-[500px] flex items-start py-12 md:py-16 px-4 md:px-6 z-0">
               <div className="flex flex-col justify-center items-center w-full mx-auto pr-2 md:pr-4 relative z-10">
@@ -94,7 +92,6 @@ export function WhatYouGetSection() {
             fill
             sizes="100vw"
             className="object-contain object-center"
-            priority
           />
         </div>   
       </div>

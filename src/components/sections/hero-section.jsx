@@ -44,7 +44,6 @@ export function HeroSection() {
             fill
             sizes="100vw"
             className="object-cover md:object-contain object-right"
-            priority
           />         
         </div>
       </div>
@@ -57,7 +56,6 @@ export function HeroSection() {
             fill
             sizes="50vw"
             className="object-contain object-center !h-[60%] z-10 hidden md:block translate-y-10 translate-x-[4vw]"
-            priority
           />
         </div>
       </div>
@@ -83,7 +81,6 @@ export function HeroSection() {
                   fill
                   sizes="100vw"
                   className="md:hidden block object-contain object-right z-10"
-                  priority
                 />
               </div>
 
@@ -142,7 +139,6 @@ export function HeroSection() {
               height={128}
               className="object-contain object-center h-full w-auto"
               sizes="(max-width: 768px) 100vw, 50vw"
-              priority
             />
           </div>
           <div className="relative w-full max-w-[95%] px-4 mt-8 mb-4">
