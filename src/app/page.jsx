@@ -11,6 +11,8 @@ import { FAQSection } from "@/components/sections/faq-section";
 import { PreventAutoScroll } from "@/components/prevent-auto-scroll";
 import { Bg } from "@/components/sections/bg";
 
+export const dynamic = 'force-static';
+
 export default function Home() {
   return (
     <main className="min-h-screen relative">

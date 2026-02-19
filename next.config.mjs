@@ -17,6 +17,11 @@ const nextConfig = {
         source: '/:all*(woff2|woff|ttf|otf)',
         headers: [{ key: 'Cache-Control', value: longCache }],
       },
+      {
+        // Static assets (JS, CSS) in /public
+        source: '/:all*(js|css)',
+        headers: [{ key: 'Cache-Control', value: longCache }],
+      },
     ];
   },
 

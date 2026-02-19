@@ -3,7 +3,7 @@
 import { headers } from 'next/headers';
 
 import { api } from '@/services/api.service';
-import { rateLimitByEmail, rateLimitByIp } from '@/lib/rate-limit';
+import { rateLimitByIp } from '@/lib/rate-limit';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -42,30 +42,18 @@ export async function submitRegistration(formData) {
     return { success: false, error: validation.error };
   }
 
-  const emailForLimit = (formData?.email ?? '').trim().toLowerCase();
   const headersList = headers();
   const forwardedFor = headersList.get('x-forwarded-for') ?? '';
   const xRealIp = headersList.get('x-real-ip') ?? '';
   const ip = (forwardedFor.split(',')[0]?.trim() || xRealIp || 'unknown');
 
+  // Rate limit apenas por IP para reduzir chamadas ao Upstash
+  // O rate limit por IP já oferece proteção adequada contra spam
   try {
     if (rateLimitByIp) {
       const ipLimit = await rateLimitByIp.limit(`registration:ip:${ip}`);
       if (!ipLimit.success) {
         console.warn('rate_limit_blocked:ip');
-        return {
-          success: false,
-          error: 'Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente novamente.',
-        };
-      }
-    }
-
-    if (rateLimitByEmail && emailForLimit) {
-      const emailLimit = await rateLimitByEmail.limit(
-        `registration:email:${emailForLimit}`
-      );
-      if (!emailLimit.success) {
-        console.warn('rate_limit_blocked:email');
         return {
           success: false,
           error: 'Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente novamente.',
