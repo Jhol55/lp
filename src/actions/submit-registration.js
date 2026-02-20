@@ -88,6 +88,11 @@ export async function submitRegistration(formData) {
     startTimeline,
   };
 
+  // Log para debug (apenas em desenvolvimento)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Submitting registration to:', REGISTRATIONS_ENDPOINT);
+  }
+
   const result = await api.post(REGISTRATIONS_ENDPOINT, payload);
 
   if (!result.success) {

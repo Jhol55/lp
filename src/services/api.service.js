@@ -43,6 +43,11 @@ export async function apiRequest(endpoint, options = {}) {
     const timeoutId = setTimeout(() => controller.abort(), timeout);
     fetchOptions.signal = controller.signal;
 
+    // Log para debug (apenas em desenvolvimento)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('API Request:', { method, url, hasBody: !!body });
+    }
+
     const response = await fetch(url, fetchOptions);
     clearTimeout(timeoutId);
 
@@ -74,6 +79,14 @@ export async function apiRequest(endpoint, options = {}) {
       status: response.status,
     };
   } catch (error) {
+    // Log detalhado do erro para debug
+    console.error('apiRequest error:', {
+      name: error.name,
+      message: error.message,
+      url,
+      method,
+    });
+
     if (error.name === 'AbortError') {
       return {
         success: false,
@@ -82,16 +95,20 @@ export async function apiRequest(endpoint, options = {}) {
     }
 
     if (error instanceof TypeError && error.message.includes('fetch')) {
+      // Verifica se é erro de CORS ou URL inválida
+      const isNetworkError = error.message.includes('Failed to fetch') || 
+                            error.message.includes('NetworkError') ||
+                            error.message.includes('Network request failed');
+      
       return {
         success: false,
-        error: 'Erro ao conectar com o servidor. Verifique sua conexão.',
+        error: 'Não foi possível enviar seus dados no momento. Por favor, verifique sua conexão com a internet e tente novamente.',
       };
     }
 
-    console.error('apiRequest error:', error);
     return {
       success: false,
-      error: 'Erro inesperado ao processar requisição. Tente novamente.',
+      error: error.message || 'Erro inesperado ao processar requisição. Tente novamente.',
     };
   }
 }

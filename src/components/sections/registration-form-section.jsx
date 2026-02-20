@@ -356,13 +356,14 @@ export function RegistrationFormSection() {
     const [showCalendly, setShowCalendly] = useState(false);
     const [isCalendlyLoaded, setIsCalendlyLoaded] = useState(false);
 
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        setShowCalendly(true);
-      }, 4000);
+    // Calendly display logic - Comentado temporariamente
+    // useEffect(() => {
+    //   const timer = setTimeout(() => {
+    //     setShowCalendly(true);
+    //   }, 4000);
 
-      return () => clearTimeout(timer);
-    }, []);
+    //   return () => clearTimeout(timer);
+    // }, []);
 
     useEffect(() => {
       if (!showCalendly) return;
@@ -408,11 +409,12 @@ export function RegistrationFormSection() {
 
     return (
       <>
-        <Script
+        {/* Calendly Script - Comentado temporariamente */}
+        {/* <Script
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="afterInteractive"
           onLoad={() => setIsCalendlyLoaded(true)}
-        />
+        /> */}
 
         <motion.div
           variants={successVariants}
@@ -462,11 +464,12 @@ export function RegistrationFormSection() {
               Cadastro Realizado com Sucesso!
             </h2>
             <p className="text-base md:text-lg text-gray-medium max-w-md mx-auto">
-              Estamos quase lá! Agende agora sua reunião de 30 minutos com um de nossos especialistas para entender todo o modelo de negócio da 3Fit
+              Obrigado pelo seu cadastro! Nossa equipe entrará em contato em breve.
             </p>
           </motion.div>
 
-          {showCalendly && (
+          {/* Calendly Widget - Comentado temporariamente */}
+          {/* {showCalendly && (
             <motion.div
               ref={calendarRef}
               variants={textVariants}
@@ -484,7 +487,7 @@ export function RegistrationFormSection() {
                 style={{ width: '100%', height: '100%' }}
               />
             </motion.div>
-          )}
+          )} */}
         </motion.div>
       </>
     );
