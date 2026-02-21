@@ -357,13 +357,13 @@ export function RegistrationFormSection() {
     const [isCalendlyLoaded, setIsCalendlyLoaded] = useState(false);
 
     // Calendly display logic - Comentado temporariamente
-    // useEffect(() => {
-    //   const timer = setTimeout(() => {
-    //     setShowCalendly(true);
-    //   }, 4000);
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setShowCalendly(true);
+      }, 3000);
 
-    //   return () => clearTimeout(timer);
-    // }, []);
+      return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
       if (!showCalendly) return;
@@ -378,7 +378,7 @@ export function RegistrationFormSection() {
       // https://calendly.com/d/cxp2-7t8-pgj/nova-reuniao?primary_color=ff8d00
       calendlyContainerRef.current.innerHTML = '';
       window.Calendly?.initInlineWidget?.({
-        url: 'https://calendly.com/d/cxp2-7t8-pgj/nova-reuniao?primary_color=ff8d00',
+        url: 'https://calendly.com/3fitgads/nova-reuniao?primary_color=ff8d00',
         parentElement: calendlyContainerRef.current,
         prefill: {
           name: formData?.name ?? '',
@@ -410,11 +410,11 @@ export function RegistrationFormSection() {
     return (
       <>
         {/* Calendly Script - Comentado temporariamente */}
-        {/* <Script
+        <Script
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="afterInteractive"
           onLoad={() => setIsCalendlyLoaded(true)}
-        /> */}
+        /> 
 
         <motion.div
           variants={successVariants}
@@ -464,12 +464,12 @@ export function RegistrationFormSection() {
               Cadastro Realizado com Sucesso!
             </h2>
             <p className="text-base md:text-lg text-gray-medium max-w-md mx-auto">
-              Obrigado pelo seu cadastro! Nossa equipe entrará em contato em breve.
+              Estamos quase lá! Agende agora sua reunião de 30 minutos com um de nossos especialistas para entender todo o modelo de negócio da 3Fit
             </p>
           </motion.div>
 
           {/* Calendly Widget - Comentado temporariamente */}
-          {/* {showCalendly && (
+          {showCalendly && (
             <motion.div
               ref={calendarRef}
               variants={textVariants}
@@ -487,7 +487,7 @@ export function RegistrationFormSection() {
                 style={{ width: '100%', height: '100%' }}
               />
             </motion.div>
-          )} */}
+          )}
         </motion.div>
       </>
     );
