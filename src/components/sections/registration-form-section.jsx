@@ -378,7 +378,7 @@ export function RegistrationFormSection() {
       // https://calendly.com/d/cxp2-7t8-pgj/nova-reuniao?primary_color=ff8d00
       calendlyContainerRef.current.innerHTML = '';
       window.Calendly?.initInlineWidget?.({
-        url: 'https://calendly.com/3fitgads/nova-reuniao?primary_color=ff8d00',
+        url: 'https://calendly.com/3fitgads/nova-reuniao-2?primary_color=ff8d00',
         parentElement: calendlyContainerRef.current,
         prefill: {
           name: formData?.name ?? '',
